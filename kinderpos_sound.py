@@ -1,4 +1,5 @@
-from flask import Flask, render_template_string, request, jsonify
+from flask import Flask, render_template_string, request, jsonify, send_from_directory
+import os
 from escpos.printer import Usb
 from PIL import Image
 from datetime import datetime
@@ -67,6 +68,12 @@ HTML = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <title>Kinderkasse 🍭</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#ff4500">
+<link rel="icon" href="/favicon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
 <style>
 body { font-family: sans-serif; text-align:center; background:#fff8dc; }
 h1 { color:#ff4500; }
@@ -209,6 +216,21 @@ function printCart() {
 }
 </script>
 
+<script>
+// Vollbild aktivieren wenn möglich (einmalig bei erster Interaktion)
+function enableFullscreen() {
+    let elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+    }
+}
+document.addEventListener('click', enableFullscreen, {once: true});
+</script>
+
 </head>
 <body>
 <h1>Kinderkasse 🍭</h1>
@@ -238,6 +260,12 @@ function printCart() {
 @app.route("/")
 def index():
     return render_template_string(HTML, products=products)
+
+# Route zum Ausliefern der vorhandenen Favicon-Dateien im Ordner /favicon
+@app.route('/favicon/<path:filename>')
+def favicon_files(filename):
+        return send_from_directory(os.path.join(app.root_path, 'favicon'), filename)
+
 
 @app.route("/print", methods=["POST"])
 def print_cart():
