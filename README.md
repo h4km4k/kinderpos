@@ -53,9 +53,12 @@ Konfiguration
 
 Screenshots
 -----------
-- Demo UI: `screenshots/screen1.png`
-- Demo UI: `screenshots/screen2.png`
-- Bon‑Beispiel: `screenshots/screen3.png`
+<img src="screenshots/screen1.png" alt="Demo UI" style="width:100%; height:auto;">
+<img src="screenshots/screen2.png" alt="Demo UI" style="width:100%; height:auto;">
+
+Bon
+-----------
+<img src="screenshots/screen3.png" alt="Bon" style="width:100%; height:auto;">
 
 Tests & Debugging
 -----------------
