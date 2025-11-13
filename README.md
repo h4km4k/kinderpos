@@ -54,20 +54,13 @@ Konfiguration
 Screenshots
 -----------
 - Demo UI: `screenshots/screen1.png`
-- Bon‑Beispiel: `screenshots/screen2.png`
-
-(Ersetzen Sie die Platzhalterbilder im Ordner `screenshots/` durch echte PNGs.)
+- Demo UI: `screenshots/screen2.png`
+- Bon‑Beispiel: `screenshots/screen3.png`
 
 Tests & Debugging
 -----------------
 - Browser‑Konsole (F12) zeigt Fehler beim Laden von Assets oder beim Abspielen von Audio.
 - Server‑Konsole zeigt Druckfehler oder Fehler beim DHT‑Lesen.
-
-Weiteres / Ideen
-----------------
-- Persistente Produkttabelle (JSON/Server) oder LocalStorage für Favoriten
-- UI‑Styling verfeinern / Fullscreen für Touchscreens
-- Konfigurationsdatei für Drucker/DHT und Audio
 
 Lizenz
 ------
